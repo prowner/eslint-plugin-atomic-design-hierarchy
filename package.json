@@ -4,13 +4,21 @@
     "type": "git",
     "url": "git+https://github.com/robinalaerts1/eslint-plugin-atomic-design-hierarchy.git"
   },
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Eslint plugin for enforcing atomic design hierarchy",
   "main": "index.js",
   "author": "Robin Alaerts",
   "license": "ISC",
   "dependencies": {
-    "eslint": "^7.11.0"
+    "eslint": "^7.11.0",
+    "jest": "^26.5.3"
   },
-  "keywords": ["eslint", "atomic design", "eslint plugin"]
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "eslint",
+    "atomic design",
+    "eslint plugin"
+  ]
 }
