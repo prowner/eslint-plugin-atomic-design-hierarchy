@@ -1,4 +1,4 @@
-function testHierarchy(filePath, importPath, hierarchy, componentFolder) {
+function validateHierarchy(filePath, importPath, hierarchy, componentFolder) {
     const res = new RegExp(`${componentFolder}\\/(\\w+)`, 'g').exec(filePath);
     if (res) {
         const fileLevel = res[1];
@@ -17,4 +17,4 @@ function testHierarchy(filePath, importPath, hierarchy, componentFolder) {
     }
 }
 
-module.exports = testHierarchy;
+module.exports = validateHierarchy;

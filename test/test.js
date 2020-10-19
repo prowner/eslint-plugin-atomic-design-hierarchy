@@ -1,4 +1,4 @@
-const testHierarchy = require('../helper');
+const validateHierarchy = require('../helper');
 
 describe('Validate hierarchy with default config', () => {
     const filePath = 'src/components/molecules/ComponentX';
@@ -15,22 +15,22 @@ describe('Validate hierarchy with default config', () => {
     const componentFolder = 'components';
 
     it('allow downward import', () => {
-        const errors = testHierarchy(filePath, '../atoms/ComponentA', hierarchy, componentFolder);
+        const errors = validateHierarchy(filePath, '../atoms/ComponentA', hierarchy, componentFolder);
         expect(errors).toEqual(undefined);
     });
 
     it('allow horizontal import', () => {
-        const errors = testHierarchy(filePath, './ComponentY', hierarchy, componentFolder);
+        const errors = validateHierarchy(filePath, './ComponentY', hierarchy, componentFolder);
         expect(errors).toEqual(undefined);
     });
 
     it('disallow upward import', () => {
-        const errors = testHierarchy(filePath, '../organisms/ComponentB', hierarchy, componentFolder);
+        const errors = validateHierarchy(filePath, '../organisms/ComponentB', hierarchy, componentFolder);
         expect(errors).toEqual('Cannot import organisms from molecules');
     });
 
     it('ignore source files outside of components folder', () => {
-        const errors = testHierarchy(filePathOutsideComponentsFolder, '../organisms/ComponentB', hierarchy, componentFolder);
+        const errors = validateHierarchy(filePathOutsideComponentsFolder, '../organisms/ComponentB', hierarchy, componentFolder);
         expect(errors).toEqual(undefined);
     });
 });
@@ -50,27 +50,27 @@ describe('Validate hierarchy with custom components folder', () => {
     const componentFolder = 'components-alt';
 
     it('allow downward import', () => {
-        const errors = testHierarchy(filePath, '../atoms/ComponentA', hierarchy, componentFolder);
+        const errors = validateHierarchy(filePath, '../atoms/ComponentA', hierarchy, componentFolder);
         expect(errors).toEqual(undefined);
     });
 
     it('allow horizontal import', () => {
-        const errors = testHierarchy(filePath, './ComponentY', hierarchy, componentFolder);
+        const errors = validateHierarchy(filePath, './ComponentY', hierarchy, componentFolder);
         expect(errors).toEqual(undefined);
     });
 
     it('disallow upward import', () => {
-        const errors = testHierarchy(filePath, '../organisms/ComponentB', hierarchy, componentFolder);
+        const errors = validateHierarchy(filePath, '../organisms/ComponentB', hierarchy, componentFolder);
         expect(errors).toEqual('Cannot import organisms from molecules');
     });
 
     it('ignore source files outside of components folder', () => {
-        const errors = testHierarchy(filePathOutsideComponentsFolder, '../organisms/ComponentB', hierarchy, componentFolder);
+        const errors = validateHierarchy(filePathOutsideComponentsFolder, '../organisms/ComponentB', hierarchy, componentFolder);
         expect(errors).toEqual(undefined);
     });
 });
 
-describe('Validate hierarchy with custom hierarchy', () => {
+describe('Validate hierarchy with custom hierarchy names', () => {
     const filePath = 'src/components/levelTwo/ComponentX';
     const filePathOutsideComponentsFolder = 'src/components-alt/levelTwo/ComponentX';
 
@@ -85,22 +85,57 @@ describe('Validate hierarchy with custom hierarchy', () => {
     const componentFolder = 'components';
 
     it('allow downward import', () => {
-        const errors = testHierarchy(filePath, '../levelOne/ComponentA', hierarchy, componentFolder);
+        const errors = validateHierarchy(filePath, '../levelOne/ComponentA', hierarchy, componentFolder);
         expect(errors).toEqual(undefined);
     });
 
     it('allow horizontal import', () => {
-        const errors = testHierarchy(filePath, './ComponentY', hierarchy, componentFolder);
+        const errors = validateHierarchy(filePath, './ComponentY', hierarchy, componentFolder);
         expect(errors).toEqual(undefined);
     });
 
     it('disallow upward import', () => {
-        const errors = testHierarchy(filePath, '../levelThree/ComponentB', hierarchy, componentFolder);
+        const errors = validateHierarchy(filePath, '../levelThree/ComponentB', hierarchy, componentFolder);
         expect(errors).toEqual('Cannot import levelThree from levelTwo');
     });
 
     it('ignore source files outside of components folder', () => {
-        const errors = testHierarchy(filePathOutsideComponentsFolder, '../levelThree/ComponentB', hierarchy, componentFolder);
+        const errors = validateHierarchy(filePathOutsideComponentsFolder, '../levelThree/ComponentB', hierarchy, componentFolder);
         expect(errors).toEqual(undefined);
+    });
+});
+
+describe('Validate hierarchy with custom hierarchy levels', () => {
+    const filePath = 'src/components/particles/ComponentX';
+
+    const hierarchy = {
+        atoms: 0,
+        particles: 1,
+        molecules: 1,
+        organisms: 2,
+        templates: 3,
+        pages: 4
+    };
+
+    const componentFolder = 'components';
+
+    it('allow downward import', () => {
+        const errors = validateHierarchy(filePath, '../atoms/ComponentA', hierarchy, componentFolder);
+        expect(errors).toEqual(undefined);
+    });
+
+    it('allow horizontal import of same type', () => {
+        const errors = validateHierarchy(filePath, './ComponentY', hierarchy, componentFolder);
+        expect(errors).toEqual(undefined);
+    });
+
+    it('allow horizontal import of different type', () => {
+        const errors = validateHierarchy(filePath, '../molecules/ComponentB', hierarchy, componentFolder);
+        expect(errors).toEqual(undefined);
+    });
+
+    it('disallow upward import', () => {
+        const errors = validateHierarchy(filePath, '../organisms/ComponentC', hierarchy, componentFolder);
+        expect(errors).toEqual('Cannot import organisms from particles');
     });
 });

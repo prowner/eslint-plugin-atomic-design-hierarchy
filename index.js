@@ -1,4 +1,4 @@
-const testHierarchy = require('./helper');
+const validateHierarchy = require('./helper');
 
 const DEFAULT_HIERARCHY = {
     atoms: 0,
@@ -23,17 +23,20 @@ module.exports.rules = {
                 }
             ]
         },
-        create: context =>
-            ({
+        create: context => {
+            const hierarchy = context.options[0] || DEFAULT_HIERARCHY;
+            const componentFolder = context.options[1] || DEFAULT_COMPONENTS_FOLDER;
+
+            return {
                 ImportDeclaration: ( node ) => {
-                    const hierarchy = context.options[0] || DEFAULT_HIERARCHY;
                     const fn = context.getFilename();
-                    const componentFolder = context.options[1] || DEFAULT_COMPONENTS_FOLDER;
-                    const error = testHierarchy(fn, node.source.value, hierarchy, componentFolder);
+                    const error = validateHierarchy(fn, node.source.value, hierarchy, componentFolder);
                     if(error) {
                         context.report(node, error);
                     }
                 }
-            })
+            }
+        }
+
     }
 };
