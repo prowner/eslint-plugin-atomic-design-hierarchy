@@ -13,13 +13,13 @@ Add the plugin to your eslint config file
 
 ```
 "plugins": [
-    "atomic-design"
+    "atomic-design-hierarchy"
 ],
 ```
 
 Next, enable the rule
 
-``"atomic-design/hierarchical-import": "error"``
+``"atomic-design-hierarchy/hierarchical-import": "error"``
 
 ## Configuring
 
@@ -41,7 +41,7 @@ The plugin will only check imports in these folders located under the components
 You can also change the root components folder name. 
 The plugin will only check files and imports within this folder.
 ```
-"atomic-design/hierarchical-import": [
+"atomic-design-hierarchy/hierarchical-import": [
     "error",
     {
         "atoms": 0,
