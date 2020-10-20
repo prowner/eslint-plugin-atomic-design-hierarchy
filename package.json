@@ -9,11 +9,11 @@
   "main": "index.js",
   "author": "Robin Alaerts",
   "license": "ISC",
-  "dependencies": {
-    "eslint": "^7.11.0"
-  },
   "devDependencies": {
     "jest": "^26.5.3"
+  },
+  "peerDependencies": {
+    "eslint": ">=0.8.0"
   },
   "scripts": {
     "test": "jest --collect-coverage"
