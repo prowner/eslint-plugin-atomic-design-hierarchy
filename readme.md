@@ -1,7 +1,6 @@
 # Atomic Design ESLint Plugin
 
 [![npm version](https://badge.fury.io/js/eslint-plugin-atomic-design-hierarchy.svg)](https://badge.fury.io/js/eslint-plugin-atomic-design-hierarchy)
-![Node.js CI](https://github.com/robinalaerts1/eslint-plugin-atomic-design-hierarchy/workflows/Node.js%20CI/badge.svg)
 ![david-dm](https://david-dm.org/robinalaerts1/eslint-plugin-atomic-design-hierarchy.svg)
 
 A simplistic plugin that enforces atomic design hierarchy. 
