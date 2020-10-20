@@ -1,7 +1,7 @@
 # Atomic Design ESLint Plugin
 
 [![npm version](https://badge.fury.io/js/eslint-plugin-atomic-design-hierarchy.svg)](https://badge.fury.io/js/eslint-plugin-atomic-design-hierarchy)
-[![Coverage Status](https://coveralls.io/repos/github/robinalaerts1/eslint-plugin-atomic-design-hierarchy/badge.svg?branch=master)](https://coveralls.io/github/robinalaerts1/eslint-plugin-atomic-design-hierarchy?branch=master)
+![Node.js CI](https://github.com/robinalaerts1/eslint-plugin-atomic-design-hierarchy/workflows/Node.js%20CI/badge.svg)
 
 A simplistic plugin that enforces atomic design hierarchy. 
 The plugin allows you to define a components folder containing component level divisions (e.g. atoms, molecules, ...).
