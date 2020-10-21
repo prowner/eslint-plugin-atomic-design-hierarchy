@@ -10,13 +10,14 @@
   "author": "Robin Alaerts",
   "license": "ISC",
   "devDependencies": {
+    "coveralls": "^3.1.0",
     "jest": "^26.5.3"
   },
   "peerDependencies": {
     "eslint": ">=0.8.0"
   },
   "scripts": {
-    "test": "jest --collect-coverage"
+    "test": "jest --collect-coverage && coveralls < coverage/lcov.info"
   },
   "keywords": [
     "eslint",
