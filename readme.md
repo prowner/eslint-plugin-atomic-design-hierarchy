@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/robinalaerts1/eslint-plugin-atomic-design-hierarchy.png?branch=master)](https://travis-ci.org/robinalaerts1/eslint-plugin-atomic-design-hierarchy)
 [![npm version](https://badge.fury.io/js/eslint-plugin-atomic-design-hierarchy.svg)](https://badge.fury.io/js/eslint-plugin-atomic-design-hierarchy)
 ![david-dm](https://david-dm.org/robinalaerts1/eslint-plugin-atomic-design-hierarchy.svg)
+[![codecov.io Code Coverage](https://img.shields.io/codecov/c/github/robinalaerts1/eslint-plugin-atomic-design-hierarchy.svg?maxAge=2592000)](https://codecov.io/github/dwyl/hapi-auth-jwt2?branch=master)
 
 A simplistic plugin that enforces atomic design hierarchy. 
 The plugin allows you to define a components folder containing component level divisions (e.g. atoms, molecules, ...).
