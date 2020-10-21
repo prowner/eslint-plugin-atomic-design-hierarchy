@@ -1,5 +1,6 @@
 # Atomic Design ESLint Plugin
 
+[![Build Status](https://travis-ci.org/robinalaerts1/eslint-plugin-atomic-design-hierarchy.png?branch=master)](https://travis-ci.org/robinalaerts1/eslint-plugin-atomic-design-hierarchy)
 [![npm version](https://badge.fury.io/js/eslint-plugin-atomic-design-hierarchy.svg)](https://badge.fury.io/js/eslint-plugin-atomic-design-hierarchy)
 ![david-dm](https://david-dm.org/robinalaerts1/eslint-plugin-atomic-design-hierarchy.svg)
 
